@@ -102,7 +102,7 @@ async function deleteUser(req, res, next) {
   try {
     const result = await db.User.deleteOne({
       _id: userId,
-    }).lean();
+    }).lean(); 
 
     if (result.ok === 1 && result.deletedCount === 1) {
       res.status(200).send({
