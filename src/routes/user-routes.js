@@ -4,10 +4,13 @@ const userController = require("../controllers/user-controller");
 
 const UserRouter = Router();
 
-UserRouter.get("/", userController.getUsers);
-UserRouter.get("/:userId", userController.getUserDetails);
-UserRouter.post("/", userController.createUser);
-UserRouter.patch("/:userId", userController.updateUser);
-UserRouter.delete("/:userId", userController.deleteUser);
+const { authMiddleware } = require("../middleware/auth-middleware");
+
+UserRouter.use("/users", authMiddleware);
+UserRouter.get("/users", userController.getUsers);
+UserRouter.get("/users/:userId", userController.getUserDetails);
+UserRouter.post("/users/", userController.createUser);
+UserRouter.patch("/users/:userId", userController.updateUser);
+UserRouter.delete("/users/:userId", userController.deleteUser);
 
 module.exports = UserRouter;
