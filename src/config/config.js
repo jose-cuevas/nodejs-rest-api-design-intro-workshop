@@ -109,4 +109,5 @@ const CONFIG = {
   },
 };
 
+// console.log(process.env)
 module.exports = CONFIG[ENV];
